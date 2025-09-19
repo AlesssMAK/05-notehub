@@ -28,8 +28,6 @@ export const fetchNotes = async (
   };
 
   const res = await axios.get<NoteHttpRequest>('', { params });
-  console.log(res.data);
-
   return res.data;
 };
 
