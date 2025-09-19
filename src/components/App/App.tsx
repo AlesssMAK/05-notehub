@@ -1,16 +1,16 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import css from './App.module.css';
-import { fetchNotes } from '../../sevices/noteService';
+import { useDebounce } from '@uidotdev/usehooks';
 import { useEffect, useState } from 'react';
-import NoteList from '../NoteList/NoteList';
+import toast, { Toaster } from 'react-hot-toast';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
+import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
 import NoteForm from '../NoteForm/NoteForm';
+import NoteList from '../NoteList/NoteList';
 import Pagination from '../Pagination/Pagination';
-import Loader from '../Loader/Loader';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import toast, { Toaster } from 'react-hot-toast';
 import SearchBox from '../SearchBox/SearchBox';
-import { useDebounce } from '@uidotdev/usehooks';
+import { fetchNotes } from '../sevices/noteService';
+import css from './App.module.css';
 
 const App = () => {
   const [search, setSearch] = useState<string>('');
