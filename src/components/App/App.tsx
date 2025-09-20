@@ -2,6 +2,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useDebounce } from '@uidotdev/usehooks';
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import { fetchNotes } from '../../services/noteService';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import Loader from '../Loader/Loader';
 import Modal from '../Modal/Modal';
@@ -9,7 +10,6 @@ import NoteForm from '../NoteForm/NoteForm';
 import NoteList from '../NoteList/NoteList';
 import Pagination from '../Pagination/Pagination';
 import SearchBox from '../SearchBox/SearchBox';
-import { fetchNotes } from '../sevices/noteService';
 import css from './App.module.css';
 
 const App = () => {
