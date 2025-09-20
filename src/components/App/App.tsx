@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
-import { useDebounce } from '@uidotdev/usehooks';
+import { useDebounce } from 'use-debounce';
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { fetchNotes } from '../../services/noteService';
@@ -16,7 +16,7 @@ const App = () => {
   const [search, setSearch] = useState<string>('');
   const [page, setPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [debouncedSearch] = useDebounce(search, 1000);
+  const [debouncedSearch] = useDebounce(search, 500);
 
   const { data, isLoading, isError, isSuccess } = useQuery({
     queryKey: ['notes', debouncedSearch, page],
@@ -67,7 +67,7 @@ const App = () => {
           Create note +
         </button>
       </header>
-      {data && data?.notes?.length > 0 && <NoteList notes={data?.notes} />}
+      {isSuccess && data?.notes?.length > 0 && <NoteList notes={data?.notes} />}
     </div>
   );
 };

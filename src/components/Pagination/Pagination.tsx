@@ -11,15 +11,20 @@ const Pagination = ({ totalPages, page, onPageChange }: PaginationProps) => {
   return (
     <ReactPaginate
       pageCount={totalPages}
-      pageRangeDisplayed={5}
-      marginPagesDisplayed={1}
-      onPageChange={({ selected }) => onPageChange(selected + 1)}
       forcePage={page - 1}
+      onPageChange={({ selected }) => onPageChange(selected + 1)}
       containerClassName={css.pagination}
-      activeClassName={css.active}
-      nextLabel="→"
-      previousLabel="←"
+      pageClassName={css.page}
+      pageLinkClassName={css.pageLink}
+      previousClassName={css.previous}
+      nextClassName={css.next}
+      activeClassName={css.selected}
       disabledClassName={css.disabled}
+      breakClassName={css.break}
+      previousLabel="←"
+      nextLabel="→"
+      pageRangeDisplayed={3}
+      marginPagesDisplayed={1}
     />
   );
 };
